@@ -58,7 +58,7 @@ const WelcomeScreen = () => {
 
         <View className="w-full justify-start">
           <Animated.View entering={FadeInDown.duration(100).delay(300).springify()} className="pb-6">
-            <Button title="Loading" action={() => navigateAuth('Login')} />
+            <Button title="Login" action={() => navigateAuth('Login')} />
           </Animated.View>
 
           <Animated.View entering={FadeInDown.duration(100).delay(400).springify()}>
@@ -73,10 +73,7 @@ const WelcomeScreen = () => {
 
         {/* 3rd party Auth */}
         <View className="w-full justify-normal">
-          <Animated.View
-            entering={FadeInDown.duration(100).delay(600).springify()}
-            className="border border-white pb-4"
-          >
+          <Animated.View entering={FadeInDown.duration(100).delay(600).springify()} className="pb-4">
             <ButtonOutline title="Continue with Google">
               <AntDesign name="google" size={20} color="gray" />
             </ButtonOutline>
