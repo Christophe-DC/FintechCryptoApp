@@ -1,4 +1,4 @@
-import { View, Text, ActivityIndicator, Dimensions, TextInput, Pressable } from 'react-native';
+import { View, Text, ActivityIndicator, Dimensions, TextInput, Pressable, Alert } from 'react-native';
 import React, { useState } from 'react';
 import Animated, { FadeInDown } from 'react-native-reanimated';
 import Button from '@/src/components/Button';
@@ -6,6 +6,8 @@ import Breaker from '@/src/components/Breaker';
 import ButtonOutline from '@/src/components/ButtonOutline';
 import { AntDesign } from '@expo/vector-icons';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { supabase } from '@/lib/supabase';
+import { useUserStore } from '@/store/useUserStore';
 
 const { width, height } = Dimensions.get('window');
 
@@ -13,8 +15,34 @@ const LoginScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const { setUser, setSession } = useUserStore();
 
   const { navigate: navigateAuth }: NavigationProp<AuthNavigationType> = useNavigation();
+
+  async function signInWithEmail() {
+    setIsLoading(true);
+
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: email,
+        password: password,
+      });
+
+      if (error) {
+        setIsLoading(false);
+        Alert.alert(error.message);
+      }
+
+      if (data.session && data.user) {
+        setSession(data.session);
+        setUser(data.user);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+
+    setIsLoading(false);
+  }
 
   return (
     <View className="flex-1">
@@ -74,7 +102,7 @@ const LoginScreen = () => {
           {/* Password */}
           <Animated.View className="w-full justify-start" entering={FadeInDown.duration(100).delay(300).springify()}>
             <View className="pb-6">
-              <Button title="Login" />
+              <Button title="Login" action={() => signInWithEmail()} />
             </View>
           </Animated.View>
 
@@ -118,7 +146,6 @@ const LoginScreen = () => {
           </Animated.View>
         </View>
       </View>
-      <Text>LoginScreen</Text>
     </View>
   );
 };

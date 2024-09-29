@@ -49,15 +49,15 @@ const SplashScreen = () => {
           <Text
             className="text-neutral-600 text-xl leanding-[60px] pl-1"
             style={{
-              fontFamily: 'PlusJakataSans',
+              fontFamily: 'PlusJakartaSans',
             }}
           >
-            STACKS
+            FINANCE
           </Text>
           <Text
             className="text-[#31aca3] text-xl leanding-[60px] pl-1"
             style={{
-              fontFamily: 'PlusJakataSansBoldItalic',
+              fontFamily: 'PlusJakartaSansBoldItalic',
             }}
           >
             CRYPTO
