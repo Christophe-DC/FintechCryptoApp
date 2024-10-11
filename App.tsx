@@ -11,6 +11,8 @@ const App = () => {
 
   const { session, user } = useUserStore();
 
+  useEffect(() => console.log(user, session), [user, session]);
+
   if (!isLoadingComplete) {
     return null;
   }
