@@ -5,9 +5,11 @@ import { StatusBar } from 'expo-status-bar';
 import RootNavigation from './src/screens/navigation/RootNavigation';
 import useCachedResources from './hooks/useCachedResources';
 import { useUserStore } from '@/store/useUserStore';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const App = () => {
   const isLoadingComplete = useCachedResources();
+  const queryClient = new QueryClient();
 
   const { session, user } = useUserStore();
 
@@ -19,7 +21,9 @@ const App = () => {
   return (
     <Container>
       <StatusBar style="auto" />
-      <RootNavigation />
+      <QueryClientProvider client={queryClient}>
+        <RootNavigation />
+      </QueryClientProvider>
     </Container>
   );
 };
