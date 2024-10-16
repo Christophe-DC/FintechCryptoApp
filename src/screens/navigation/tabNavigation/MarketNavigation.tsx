@@ -1,11 +1,22 @@
-import { View, Text } from 'react-native';
 import React from 'react';
+import { TransitionPresets, createStackNavigator } from '@react-navigation/stack';
+import MarketScreen from '../../tabs/market/MarketScreen';
+
+const Stack = createStackNavigator();
 
 const MarketNavigation = () => {
   return (
-    <View>
-      <Text>MarketNavigation</Text>
-    </View>
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+        ...TransitionPresets.SlideFromRightIOS,
+        animationEnabled: true,
+        gestureEnabled: true,
+        gestureDirection: 'horizontal',
+      }}
+    >
+      <Stack.Screen name="MarketS" component={MarketScreen} />
+    </Stack.Navigator> 
   );
 };
 
