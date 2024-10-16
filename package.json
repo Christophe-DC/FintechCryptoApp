@@ -25,6 +25,7 @@
     "@supabase/supabase-js": "^2.45.4",
     "@tanstack/react-query": "^5.56.2",
     "axios": "^1.7.7",
+    "date-fns": "^4.1.0",
     "expo": "~51.0.28",
     "expo-constants": "~16.0.2",
     "expo-font": "~12.0.9",
@@ -54,7 +55,7 @@
     "react-native-web": "~0.19.10",
     "react-native-webview": "13.8.6",
     "styled-components": "^6.1.13",
-    "victory-native": "^41.4.0",
+    "victory-native": "^41.6.2",
     "zustand": "^5.0.0-rc.2"
   },
   "devDependencies": {

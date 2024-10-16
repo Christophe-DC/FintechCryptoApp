@@ -18,7 +18,7 @@ const HomeNavigation = () => {
       }}
     >
       <Stack.Screen name="Homes" component={HomeScreen} />
-      <Stack.Screen name="CoinDatails" component={CoinDetailsScreen} />
+      <Stack.Screen name="CoinDetails" component={CoinDetailsScreen} />
     </Stack.Navigator>
   );
 };

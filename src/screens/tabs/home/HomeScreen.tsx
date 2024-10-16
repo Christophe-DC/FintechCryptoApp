@@ -5,7 +5,7 @@ import Avatar from '@/src/components/Avatar';
 import useSupabaseAuth from '@/hooks/useSupabaseAuth';
 import { useUserStore } from '@/store/useUserStore';
 import { Ionicons } from '@expo/vector-icons';
-import { useFocusEffect } from '@react-navigation/native';
+import { NavigationProp, useFocusEffect, useNavigation } from '@react-navigation/native';
 import { Image } from 'expo-image';
 import { useQuery } from '@tanstack/react-query';
 import { FetchAllCoins } from '../../../../utils/cryptoapi';
@@ -31,6 +31,8 @@ const HomeScreen = () => {
   const [isLoading, setLoading] = useState(false);
   const { getUserProfile } = useSupabaseAuth();
   const { session } = useUserStore();
+
+  const { navigate }: NavigationProp<ScreenNavigationType> = useNavigation();
 
   async function handleGetProfile() {
     setLoading(true);
@@ -68,7 +70,10 @@ const HomeScreen = () => {
   });
 
   const renderItem = ({ item, index }: { item: Coin; index: number }) => (
-    <Pressable className="flex-row w-full py-4 items-center">
+    <Pressable
+      className="flex-row w-full py-4 items-center"
+      onPress={() => navigate('CoinDetails', { coinUuid: item.uuid })}
+    >
       <Animated.View
         entering={FadeInDown.duration(100)
           .delay(index * 200)
@@ -109,12 +114,11 @@ const HomeScreen = () => {
 
         <View className="w-[29%] justify-center items-end">
           <Text className="font-bold text-base">{item.symbol}</Text>
-        </View>
-
-        <View className="flex-row justify-center items-center space-x-2">
-          <Text className="font-medium text-sm text-neutral-500">
-            {item.marketCap.length > 9 ? item.marketCap.slice(0.9) : item.marketCap}
-          </Text>
+          <View className="flex-row justify-center items-center space-x-2">
+            <Text className="font-medium text-sm text-neutral-500">
+              {item.marketCap.length > 9 ? item.marketCap.slice(0, 9) : item.marketCap}
+            </Text>
+          </View>
         </View>
       </Animated.View>
     </Pressable>
@@ -215,7 +219,7 @@ const HomeScreen = () => {
 
         {/* Coins  */}
         <ScrollView contentContainerStyle={{ paddingBottom: 100 }} showsVerticalScrollIndicator={false}>
-          <View className="px-4 py-1 items-center"> 
+          <View className="px-4 py-1 items-center">
             {IsAllCoinsLoading ? (
               <ActivityIndicator size="large" color="black" />
             ) : (
