@@ -7,6 +7,8 @@ const apiBaseUrl = 'https://coinranking1.p.rapidapi.com';
 
 const coinsUrl = `${apiBaseUrl}/coins?referenceCurrencyUuid=yhjMzLPhuIDl&timePeriod=24h&tiers=1&orderBy=marketCap&orderDirection=desc&limit=30&offset=0`;
 
+const newsUrl = 'https://cryptocurrency-news2.p.rapidapi.com/v1/coindesk';
+
 const CryptoApiCall = async (endpoints, params) => {
   const options = {
     method: 'GET',
@@ -15,6 +17,25 @@ const CryptoApiCall = async (endpoints, params) => {
     headers: {
       'X-RapidAPI-Key': `${XRapidAPIKey}`,
       'X-RapidAPI-Host': `${XRapidAPIHost}`,
+    },
+  };
+
+  try {
+    const response = await axios.request(options);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return {};
+  }
+};
+
+const NewsApiCall = async endpoints => {
+  const options = {
+    method: 'GET',
+    url: endpoints,
+    headers: {
+      'X-RapidAPI-Key': `${XRapidAPIKey}`,
+      'X-RapidAPI-Host': `${XRapidAPIHostNews}`,
     },
   };
 
@@ -44,4 +65,8 @@ export const FetchCoinHistory = async coinUuid => {
 export const SearchCoin = async search => {
   const endpoints = `${apiBaseUrl}/search-suggestions?referenceCurrencyUuid=yhjMzLPhuIDl&query=${search}`;
   return await CryptoApiCall(endpoints);
+};
+
+export const FetchCryptoNews = async () => {
+  return await NewsApiCall(newsUrl);
 };

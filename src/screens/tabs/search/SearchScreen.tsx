@@ -136,7 +136,7 @@ const SearchScreen = () => {
             keyExtractor={item => item.uuid}
             renderItem={renderItem}
             showsVerticalScrollIndicator={false}
-          />
+          /> 
         )}
       </View>
     </SafeAreaView>
