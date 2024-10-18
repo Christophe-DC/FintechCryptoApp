@@ -52,7 +52,7 @@ const SplashScreen = () => {
               fontFamily: 'PlusJakartaSans',
             }}
           >
-            FINANCE
+            CRYPTO
           </Text>
           <Text
             className="text-[#31aca3] text-xl leanding-[60px] pl-1"
@@ -60,7 +60,7 @@ const SplashScreen = () => {
               fontFamily: 'PlusJakartaSansBoldItalic',
             }}
           >
-            CRYPTO
+            TRACKER
           </Text>
         </Animated.View>
       </View>

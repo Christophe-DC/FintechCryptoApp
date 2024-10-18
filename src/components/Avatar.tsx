@@ -42,7 +42,54 @@ const Avatar = ({ url, size = 150, onUpload, showUpload }: Props) => {
     }
   }
 
-  async function uploadAvatar() {}
+  async function uploadAvatar() {
+    try {
+      setUploading(true);
+
+      const result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        allowsMultipleSelection: false,
+        allowsEditing: true,
+        quality: 1,
+        exif: false,
+      });
+
+      if (result.canceled || !result.assets || result.assets.length === 0) {
+        console.log('User cancelled image picker.');
+        setUploading(false);
+        return;
+      }
+
+      const image = result.assets[0];
+      console.log('Got image', image);
+
+      if (!image.uri) {
+        throw new Error('No image uri!');
+      }
+
+      const arraybuffer = await fetch(image.uri).then(res => res.arrayBuffer());
+
+      const fileExt = image.uri?.split('.').pop()?.toLocaleLowerCase() ?? 'jpeg';
+      const path = `${Date.now()}.${fileExt}`;
+      const { data, error: uploadError } = await supabase.storage.from('avatars').upload(path, arraybuffer, {
+        contentType: image.mimeType ?? 'image/jpeg',
+      });
+
+      if (uploadError) {
+        throw uploadError;
+      }
+
+      onUpload(data.path);
+    } catch (error) {
+      if (error instanceof Error) {
+        Alert.alert(error.message);
+      } else {
+        throw error;
+      }
+    } finally {
+      setUploading(false);
+    }
+  }
 
   return (
     <View>
@@ -55,21 +102,25 @@ const Avatar = ({ url, size = 150, onUpload, showUpload }: Props) => {
           />
         </View>
       ) : (
-        <View className="justify-center items-center" style={[avatarSize, styles.avatar, styles.image]}>
-          <ActivityIndicator color="white" />
+        <View className="relative">
+          <Image
+            source={require('../../assets/images/default_avatar.jpg')}
+            accessibilityLabel="Avatar"
+            style={[avatarSize, styles.avatar, styles.image]}
+          />
         </View>
       )}
 
       {showUpload && (
-        <View className="absolute right-0 bottom-0">
+        <Pressable className="absolute w-full h-full justify-center items-center" onPress={uploadAvatar}>
           {!uploading ? (
-            <Pressable>
+            <View className=" w-full h-full items-end justify-end pr-1">
               <MaterialIcons name="cloud-upload" size={30} color="black" />
-            </Pressable>
+            </View>
           ) : (
-            <ActivityIndicator color="white" />
+            <ActivityIndicator color="black" />
           )}
-        </View>
+        </Pressable>
       )}
     </View>
   );

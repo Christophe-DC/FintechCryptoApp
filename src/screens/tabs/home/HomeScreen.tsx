@@ -155,7 +155,7 @@ const HomeScreen = () => {
         <View className="mx-4 bg-neutral-800 rounded-[34px] overflow-hidden mt-2 mb-2">
           <View className="bg-[#0DF69E] justify-center items-center py-6 rounded-[34px]">
             <Text className="text-sm font-medium text-neutral-700">Total Balance</Text>
-            <Text className="text-3xl font-extrabold">$2,430.00</Text>
+            <Text className="text-3xl font-extrabold">$0.00</Text>
           </View>
 
           <View className="justify-between items-center flex-row py-4">
@@ -218,8 +218,8 @@ const HomeScreen = () => {
         </View>
 
         {/* Coins  */}
-        <ScrollView contentContainerStyle={{ paddingBottom: 100 }} showsVerticalScrollIndicator={false}>
-          <View className="px-4 py-1 items-center">
+        <ScrollView contentContainerStyle={{ paddingBottom: 300 }} showsVerticalScrollIndicator={false}>
+          <View className="px-4 items-center">
             {IsAllCoinsLoading ? (
               <ActivityIndicator size="large" color="black" />
             ) : (

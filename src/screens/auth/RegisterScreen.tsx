@@ -4,7 +4,7 @@ import Animated, { FadeInDown } from 'react-native-reanimated';
 import Button from '@/src/components/Button';
 import Breaker from '@/src/components/Breaker';
 import ButtonOutline from '@/src/components/ButtonOutline';
-import { AntDesign } from '@expo/vector-icons';
+import { AntDesign, MaterialIcons } from '@expo/vector-icons';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { supabase } from '@/lib/supabase';
 import { useUserStore } from '@/store/useUserStore';
@@ -14,6 +14,7 @@ const { width, height } = Dimensions.get('window');
 const RegisterScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const { setUser, setSession } = useUserStore();
 
@@ -86,13 +87,23 @@ const RegisterScreen = () => {
               />
             </View>
             {/* Password */}
-            <View className="border-2 border-gray-400 rounded-lg">
+            <View className="flex-row justify-between items-center border-2 border-gray-400 rounded-lg pr-2">
               <TextInput
-                className="p-4"
+                className="p-4 flex-auto"
                 onChangeText={text => setPassword(text)}
+                secureTextEntry={!showPassword}
                 value={password}
                 placeholder="Password"
                 autoCapitalize="none"
+              />
+              <MaterialIcons
+                name={showPassword ? 'visibility' : 'visibility-off'}
+                size={24}
+                color="gray"
+                forceTextInputFocus={false}
+                onPress={() => {
+                  setShowPassword(!showPassword);
+                }}
               />
             </View>
           </Animated.View>

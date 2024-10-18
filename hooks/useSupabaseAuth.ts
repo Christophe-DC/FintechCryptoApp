@@ -56,14 +56,13 @@ export default function useSupabaseAuth() {
     };
   }
 
-  async function updateUserProfile(username: string, fullName: string, avatarUrl: string, website: string) {
+  async function updateUserProfile(username: string, fullName: string, avatarUrl: string) {
     if (!session?.user) throw new Error('No user on the session!');
 
     const updates = {
       id: session.user.id,
       username,
       full_name: fullName,
-      website,
       avatar_url: avatarUrl,
       updated_at: new Date(),
     };
@@ -75,11 +74,21 @@ export default function useSupabaseAuth() {
     };
   }
 
+  async function updateUserPassword(password: string) {
+    const { data: resetData, error } = await supabase.auth.updateUser({ password: password });
+
+    return {
+      resetData,
+      error,
+    };
+  }
+
   return {
     signInWithEmail,
     signUpWithEmail,
     signout,
     getUserProfile,
     updateUserProfile,
+    updateUserPassword,
   };
 }
