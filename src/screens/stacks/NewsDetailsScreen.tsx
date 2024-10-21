@@ -1,4 +1,4 @@
-import { View, Text, Pressable, ActivityIndicator, Dimensions } from 'react-native';
+import { View, Text, Pressable, ActivityIndicator, Dimensions, Alert } from 'react-native';
 import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { BookmarkSquareIcon, ChevronLeftIcon, ShareIcon } from 'react-native-heroicons/outline';
@@ -22,13 +22,19 @@ const NewsDetailsScreen = () => {
         </View>
 
         <View className="space-x-3 rounded-full items-center justify-center flex-row">
-          <View className="bg-gray-100 p-2 rounded-full">
+          <Pressable
+            className="bg-gray-100 p-2 rounded-full"
+            onPress={() => Alert.alert('this feature is not yet implemented')}
+          >
             <ShareIcon size={25} strokeWidth={2} color="gray" />
-          </View>
+          </Pressable>
 
-          <View className="bg-gray-100 p-2 rounded-full">
+          <Pressable
+            className="bg-gray-100 p-2 rounded-full"
+            onPress={() => Alert.alert('this feature is not yet implemented')}
+          >
             <BookmarkSquareIcon size={25} strokeWidth={2} color="gray" />
-          </View>
+          </Pressable>
         </View>
       </View>
 

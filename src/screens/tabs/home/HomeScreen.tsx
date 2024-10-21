@@ -1,4 +1,4 @@
-import { View, Text, Pressable, ActivityIndicator, ScrollView, FlatList } from 'react-native';
+import { View, Text, Pressable, ActivityIndicator, ScrollView, FlatList, Alert } from 'react-native';
 import React, { useCallback, useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Avatar from '@/src/components/Avatar';
@@ -145,9 +145,12 @@ const HomeScreen = () => {
           </View>
 
           <View className="py-6">
-            <View className="bg-neutral-700 rounded-lg p-1">
+            <Pressable
+              className="bg-neutral-700 rounded-lg p-1"
+              onPress={() => Alert.alert('this feature is not yet implemented')}
+            >
               <Ionicons name="menu" size={24} color="white" />
-            </View>
+            </Pressable>
           </View>
         </View>
 
@@ -161,7 +164,10 @@ const HomeScreen = () => {
           <View className="justify-between items-center flex-row py-4">
             {/* Send to */}
             <View className="w-1/4 justify-center items-center space-y-2">
-              <View className="w-10 h-10 overflow-hidden bg-[#3B363F] rounded-full p-2">
+              <Pressable
+                className="w-10 h-10 overflow-hidden bg-[#3B363F] rounded-full p-2"
+                onPress={() => Alert.alert('this feature is not yet implemented')}
+              >
                 <Image
                   source={require('../../../../assets/images/money-send.png')}
                   placeholder={blurhash}
@@ -169,13 +175,16 @@ const HomeScreen = () => {
                   transition={1000}
                   className="w-full h-full flex-1"
                 />
-              </View>
+              </Pressable>
               <Text className="text-white">Send to</Text>
             </View>
 
             {/* Request */}
             <View className="w-1/4 justify-center items-center space-y-2">
-              <View className="w-10 h-10 overflow-hidden bg-[#3B363F] rounded-full p-2">
+              <Pressable
+                className="w-10 h-10 overflow-hidden bg-[#3B363F] rounded-full p-2"
+                onPress={() => Alert.alert('this feature is not yet implemented')}
+              >
                 <Image
                   source={require('../../../../assets/images/money-receive.png')}
                   placeholder={blurhash}
@@ -183,13 +192,16 @@ const HomeScreen = () => {
                   transition={1000}
                   className="w-full h-full flex-1"
                 />
-              </View>
+              </Pressable>
               <Text className="text-white">Request</Text>
             </View>
 
             {/* Top up */}
             <View className="w-1/4 justify-center items-center space-y-2">
-              <View className="w-10 h-10 overflow-hidden bg-[#3B363F] rounded-full p-2">
+              <Pressable
+                className="w-10 h-10 overflow-hidden bg-[#3B363F] rounded-full p-2"
+                onPress={() => Alert.alert('this feature is not yet implemented')}
+              >
                 <Image
                   source={require('../../../../assets/images/card-add.png')}
                   placeholder={blurhash}
@@ -197,13 +209,16 @@ const HomeScreen = () => {
                   transition={1000}
                   className="w-full h-full flex-1"
                 />
-              </View>
+              </Pressable>
               <Text className="text-white">Top up</Text>
             </View>
 
             {/* More  */}
             <View className="w-1/4 justify-center items-center space-y-2">
-              <View className="w-10 h-10 overflow-hidden bg-[#3B363F] rounded-full p-2">
+              <Pressable
+                className="w-10 h-10 overflow-hidden bg-[#3B363F] rounded-full p-2"
+                onPress={() => Alert.alert('this feature is not yet implemented')}
+              >
                 <Image
                   source={require('../../../../assets/images/more.png')}
                   placeholder={blurhash}
@@ -211,7 +226,7 @@ const HomeScreen = () => {
                   transition={1000}
                   className="w-full h-full flex-1"
                 />
-              </View>
+              </Pressable>
               <Text className="text-white">More</Text>
             </View>
           </View>

@@ -125,7 +125,10 @@ const LoginScreen = () => {
           {/* 3rd party Auth */}
           <View className="w-full justify-normal">
             <Animated.View entering={FadeInDown.duration(100).delay(600).springify()} className="pb-4">
-              <ButtonOutline title="Continue with Google">
+              <ButtonOutline
+                title="Continue with Google"
+                action={() => Alert.alert('this feature is not yet implemented')}
+              >
                 <AntDesign name="google" size={20} color="gray" />
               </ButtonOutline>
             </Animated.View>

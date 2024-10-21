@@ -1,4 +1,4 @@
-import { View } from 'react-native';
+import { Alert, View } from 'react-native';
 import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
@@ -17,7 +17,7 @@ const WelcomeScreen = () => {
   const { navigate: navigateAuth }: NavigationProp<AuthNavigationType> = useNavigation();
   //const { navigate: navigateTab }: NavigationProp<TabNavigationType> = useNavigation();
   return (
-    <SafeAreaView className="flex-1 justify-center items-center bg-white">
+    <View className="flex-1 justify-center items-center bg-white">
       <StatusBar style="auto" />
       <View className="w-full px-4 items-center justify-center space-y-6 h-full">
         {/* Logo and Brand Name*/}
@@ -74,7 +74,10 @@ const WelcomeScreen = () => {
         {/* 3rd party Auth */}
         <View className="w-full justify-normal">
           <Animated.View entering={FadeInDown.duration(100).delay(600).springify()} className="pb-4">
-            <ButtonOutline title="Continue with Google">
+            <ButtonOutline
+              title="Continue with Google"
+              action={() => Alert.alert('this feature is not yet implemented')}
+            >
               <AntDesign name="google" size={20} color="gray" />
             </ButtonOutline>
           </Animated.View>
@@ -83,13 +86,16 @@ const WelcomeScreen = () => {
             entering={FadeInDown.duration(100).delay(700).springify()}
             className="border border-white pb-4"
           >
-            <ButtonOutline title="Continue with Apple">
+            <ButtonOutline
+              title="Continue with Apple"
+              action={() => Alert.alert('this feature is not yet implemented')}
+            >
               <AntDesign name="apple1" size={20} color="gray" />
             </ButtonOutline>
           </Animated.View>
         </View>
       </View>
-    </SafeAreaView>
+    </View>
   );
 };
 

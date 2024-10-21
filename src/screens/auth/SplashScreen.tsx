@@ -22,7 +22,7 @@ const SplashScreen = () => {
   }, []);
 
   return (
-    <SafeAreaView className="flex-1 justify-center items-center bg-white">
+    <View className="flex-1 justify-center items-center bg-white">
       <StatusBar style="auto" />
       <View className="w-full px-4 items-center">
         <Animated.View
@@ -64,7 +64,7 @@ const SplashScreen = () => {
           </Text>
         </Animated.View>
       </View>
-    </SafeAreaView>
+    </View>
   );
 };
 

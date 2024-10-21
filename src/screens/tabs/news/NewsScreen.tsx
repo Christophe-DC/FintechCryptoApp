@@ -1,4 +1,4 @@
-import { View, Text, Pressable, ActivityIndicator, ScrollView, FlatList } from 'react-native';
+import { View, Text, Pressable, ActivityIndicator, ScrollView, FlatList, Alert } from 'react-native';
 import React, { useCallback, useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { NavigationProp, useFocusEffect, useNavigation } from '@react-navigation/native';
@@ -74,9 +74,12 @@ const NewsScreen = () => {
 
           {/* Bookmark */}
 
-          <View className="w-[10%] justify-center">
+          <Pressable
+            className="w-[10%] justify-center"
+            onPress={() => Alert.alert('this feature is not yet implemented')}
+          >
             <BookmarkSquareIcon color="gray" />
-          </View>
+          </Pressable>
         </View>
       </Pressable>
     );

@@ -1,4 +1,4 @@
-import { View, Text, ActivityIndicator, Pressable } from 'react-native';
+import { View, Text, ActivityIndicator, Pressable, Alert } from 'react-native';
 import React, { useState, useEffect } from 'react';
 import { useRoute } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -77,9 +77,12 @@ const CoinDetailsScreen = () => {
             <View>
               <Text className="font-bold text-lg">{item.symbol}</Text>
             </View>
-            <View className="border-2 border-neutral-500 rounded-full p-1">
+            <Pressable
+              className="border-2 border-neutral-500 rounded-full p-1"
+              onPress={() => Alert.alert('this feature is not yet implemented')}
+            >
               <Entypo name="dots-three-horizontal" size={24} color="gray" />
-            </View>
+            </Pressable>
           </View>
           <View className="px-4 justify-center items-center py-2">
             <Text className={`font-extrabold text-2xl`}>{numeral(parseFloat(item?.price)).format('$0,0.00')}</Text>
