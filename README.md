@@ -1,50 +1,103 @@
-# Welcome to your Expo app 👋
+# React native crypto application
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+This mobile cryptocurrency app provides market price listings based on trade volume and market capitalization. It also lets you search for specific cryptocurrencies and stay updated with the latest crypto news. Designed for users interested in the cryptocurrency market and investments, the app offers real-time and historical data on market changes.
 
-## Get started
 
-1. Install dependencies
+## Download
 
-   ```bash
-   npm install
-   ```
+<a href="https://play.google.com/store/apps/details?id=com.cdcoding.fintechcrypto" target="_blank">
+<img src="https://play.google.com/intl/en_gb/badges/static/images/badges/en_badge_web_generic.png" width=240 />
+</a>
 
-2. Start the app
 
-   ```bash
-    npx expo start
-   ```
+## Screenshots
 
-In the output, you'll find options to open the app in a
+<table>
+   
+<tr>
+    <td>
+    <p align="center">
+      <img src="public/Screenshot_20241018_173310.png" width="300"/>
+    </p>
+  </td>
+    <td>
+    <p align="center">
+      <img src="public/Screenshot_20241018_173629.png" width="300"/>
+    </p>
+  </td>
+    <td>
+    <p align="center">
+      <img src="public/Screenshot_20241018_173626.png" width="300"/>
+    </p>
+  </td>
+   
+<tr>
+</tr>
+  <td>
+    <p align="center">
+      <img src="public/Screenshot_20241018_173632.png" width="300"/>
+    </p>
+  </td>
+    <td>
+    <p align="center">
+      <img src="public/Screenshot_20241018_173623.png" width="300"/>
+    </p>
+  </td>
+    <td>
+    <p align="center">
+      <img src="public/Screenshot_20241018_173619.png" width="300"/>
+    </p>
+  </td>
+</tr>
+</table>
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## Technology stack
+- React Native (ReactJS-based framework that can use native platform capabilities)
+- Expo (framework and a platform for universal React applications)
+- Tailwind (styling)
 
-## Get a fresh project
+## Dependencies
 
-When you're ready, run:
+- Axios (Javascript library used to make HTTP requests from node. js or XMLHttpRequests from the browser)
+- React Navigation - (Routing and navigation)
+- React native async storage
+- Victory native
+- React native reanimated
+- React native safe area context
+- Supabase
 
+## Prerequisites
+
+The following software is required to be installed on your system:
+- Node 
+- Npm 
+- Expo
+
+Type the following commands in the terminal to verify your node and npm versions
 ```bash
-npm run reset-project
+npm -v
+node -v
+expo -V
 ```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+1. Clone the repo
+```bash
+git clone https://github.com/Christophe-DC/FintechCryptoApp.git
+cd FintechCryptoApp
+```
+2. Install the dependencies
+```bash
+npm install
+```
+3. Start the application
+```bash
+expo start
+```
+4. Run the application on an iOS simulator
+```bash
+npm run ios
+```
+5. Run the application on an android simulator
+```bash
+  npm run android
+```
